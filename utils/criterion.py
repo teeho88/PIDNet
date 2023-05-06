@@ -24,7 +24,7 @@ class CrossEntropy(nn.Module):
 
     def forward(self, score, target):
 
-        if config.MODEL.NUM_OUTPUTS == 1:
+        if not (isinstance(score, list) or isinstance(score, tuple)):
             score = [score]
 
         balance_weights = config.LOSS.BALANCE_WEIGHTS
